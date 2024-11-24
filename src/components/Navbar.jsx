@@ -41,7 +41,7 @@ const Navbar = () => {
 
         {/* MOBILE LIST */}
         <div
-          className={`w-full h-full bg-[#e6e6ff] flex flex-col items-center justify-center gap-8 font-medium text-lg absolute top-16 transition-all ease-in-out ${
+          className={` h-[calc(100vh-64px)] md:h-[calc(100vh)-80px] w-full  bg-[#e6e6ff] flex flex-col items-center justify-center gap-8 font-medium text-lg absolute top-16 transition-all ease-in-out ${
             open ? '-right-0' : '-right-[100%]'
           }`}
         >

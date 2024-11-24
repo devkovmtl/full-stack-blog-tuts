@@ -5,6 +5,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import MainLayout from './layouts/MainLayout';
 import Homepage from './routes/Homepage';
+import PostListPage from './routes/PostListPage';
+import SinglePostPage from './routes/SinglePostPage';
+import LoginPage from './routes/LoginPage';
+import RegisterPage from './routes/RegisterPage';
+import Write from './routes/Write';
 
 const router = createBrowserRouter([
   {
@@ -13,6 +18,26 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Homepage />,
+      },
+      {
+        path: '/posts',
+        element: <PostListPage />,
+      },
+      {
+        path: '/:slug',
+        element: <SinglePostPage />,
+      },
+      {
+        path: '/write',
+        element: <Write />,
+      },
+      {
+        path: '/login',
+        element: <LoginPage />,
+      },
+      {
+        path: '/register',
+        element: <RegisterPage />,
       },
     ],
   },
