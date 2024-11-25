@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Image from './Image';
 import { Link } from 'react-router-dom';
+import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react';
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -45,28 +46,54 @@ const Navbar = () => {
             open ? '-right-0' : '-right-[100%]'
           }`}
         >
-          <Link to="/">Home</Link>
-          <Link to="/">Trending</Link>
-          <Link to="/">Most Popular</Link>
-          <Link to="/">LinkAbout</Link>
-          <Link to="">
-            <button className="py-2 px-4 rounded-3xl bg-blue-800 text-white">
-              Login 👋
-            </button>
+          <Link to="/" onClick={() => setOpen(false)}>
+            Home
           </Link>
+          <Link to="/posts?sort=trending" onClick={() => setOpen(false)}>
+            Trending
+          </Link>
+          <Link to="/posts?sort=popular" onClick={() => setOpen(false)}>
+            Most Popular
+          </Link>
+          <Link to="/" onClick={() => setOpen(false)}>
+            About
+          </Link>
+          <SignedOut>
+            <Link to="/login" onClick={() => setOpen(false)}>
+              <button className="py-2 px-4 rounded-3xl bg-blue-800 text-white">
+                Login 👋
+              </button>
+            </Link>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
         </div>
       </div>
       {/* DESKTOP MENU */}
       <div className="hidden md:flex items-center gap-8 xl:gap-12 font-medium">
-        <Link to="/">Home</Link>
-        <Link to="/">Trending</Link>
-        <Link to="/">Most Popular</Link>
-        <Link to="/">LinkAbout</Link>
-        <Link to="">
-          <button className="py-2 px-4 rounded-3xl bg-blue-800 text-white">
-            Login 👋
-          </button>
+        <Link to="/" onClick={() => setOpen(false)}>
+          Home
         </Link>
+        <Link to="/posts?sort=trending" onClick={() => setOpen(false)}>
+          Trending
+        </Link>
+        <Link to="/posts?sort=popular" onClick={() => setOpen(false)}>
+          Most Popular
+        </Link>
+        <Link to="/" onClick={() => setOpen(false)}>
+          About
+        </Link>
+        <SignedOut>
+          <Link to="/login" onClick={() => setOpen(false)}>
+            <button className="py-2 px-4 rounded-3xl bg-blue-800 text-white">
+              Login 👋
+            </button>
+          </Link>
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </div>
     </div>
   );
